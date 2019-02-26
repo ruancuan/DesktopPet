@@ -6,3 +6,16 @@ D:\编程\Projects\CSharp2\Snowy\Snowy\obj\Debug\Snowy.csproj.GenerateResource.C
 D:\编程\Projects\CSharp2\Snowy\Snowy\obj\Debug\Snowy.exe
 D:\编程\Projects\CSharp2\Snowy\Snowy\obj\Debug\Snowy.pdb
 D:\编程\Projects\CSharp2\Snowy\Snowy\obj\Debug\Snowy.Form1.resources
+E:\MyCShapeProject\DesktopPet-master\Snowy\bin\Debug\Snowy.exe
+E:\MyCShapeProject\DesktopPet-master\Snowy\bin\Debug\Snowy.pdb
+E:\MyCShapeProject\DesktopPet-master\Snowy\bin\Debug\Newtonsoft.Json.dll
+E:\MyCShapeProject\DesktopPet-master\Snowy\bin\Debug\Newtonsoft.Json.pdb
+E:\MyCShapeProject\DesktopPet-master\Snowy\bin\Debug\Newtonsoft.Json.xml
+E:\MyCShapeProject\DesktopPet-master\Snowy\obj\Debug\Snowy.csprojAssemblyReference.cache
+E:\MyCShapeProject\DesktopPet-master\Snowy\obj\Debug\Snowy.Form1.resources
+E:\MyCShapeProject\DesktopPet-master\Snowy\obj\Debug\Snowy.Properties.Resources.resources
+E:\MyCShapeProject\DesktopPet-master\Snowy\obj\Debug\Snowy.csproj.GenerateResource.cache
+E:\MyCShapeProject\DesktopPet-master\Snowy\obj\Debug\Snowy.csproj.CoreCompileInputs.cache
+E:\MyCShapeProject\DesktopPet-master\Snowy\obj\Debug\Snowy.csproj.CopyComplete
+E:\MyCShapeProject\DesktopPet-master\Snowy\obj\Debug\Snowy.exe
+E:\MyCShapeProject\DesktopPet-master\Snowy\obj\Debug\Snowy.pdb

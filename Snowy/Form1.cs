@@ -32,10 +32,17 @@ namespace Snowy
         Bitmap[] petDragWithClothes = new Bitmap[3];
         Bitmap[] petBlinkWithClothes = new Bitmap[3];
 
+        #region cur图标
+        static Cursor curhit1;
+        static Cursor curhit2;
+
+        #endregion
+
 
 
         public Form1()
         {
+            IntPtrLoadCursorFromFile();
             InitializeComponent();
         }
         #region 重载
@@ -120,6 +127,7 @@ namespace Snowy
             Graphics g = Graphics.FromImage(bitmap);
             g.DrawImage(bottom, new Rectangle(0, 0, bottom.Width, bottom.Height), new Rectangle(0, 0, bottom.Width, bottom.Height), GraphicsUnit.Pixel);
             g.DrawImage(top, new Rectangle(x, y, top.Width, top.Height), new Rectangle(0, 0, top.Width, top.Height), GraphicsUnit.Pixel);
+            
             return bitmap;
         }
 
@@ -136,6 +144,19 @@ namespace Snowy
                 bitmap = CombinedPic(bitmap, petHat[hatNum, state], 0, 0);
             }
             return bitmap;
+        }
+
+        [System.Runtime.InteropServices.DllImport("user32.dll")]
+        public static extern IntPtr LoadCursorFromFile(string fileName);
+
+        public static IntPtr IntPtrLoadCursorFromFile()
+        {
+            IntPtr path1 = LoadCursorFromFile(Application.StartupPath + "\\shell\\cursor\\hit1.cur");
+            curhit1 = new Cursor(path1);
+            IntPtr path2 = LoadCursorFromFile(Application.StartupPath + "\\shell\\cursor\\hit2.cur");
+            curhit2 = new Cursor(path2);
+
+            return (IntPtr)0;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -186,6 +207,7 @@ namespace Snowy
                 oPointClicked = new Point(e.X, e.Y);
                 tmrDrag.Interval = 110;
                 tmrDrag.Enabled = true;
+                this.Cursor = curhit2;
             }
         }
 
@@ -196,6 +218,7 @@ namespace Snowy
                 bFormDragging = false;
                 tmrDrag.Enabled = false;
                 SetBits(petWithClothes[0]);
+                this.Cursor = curhit1;
             }
         }
 
@@ -208,6 +231,7 @@ namespace Snowy
                 oMoveToPoint = PointToScreen(new Point(e.X, e.Y));
                 oMoveToPoint.Offset(oPointClicked.X * -1, (oPointClicked.Y + SystemInformation.CaptionHeight + SystemInformation.BorderSize.Height) * -1 + 24);
                 Location = oMoveToPoint;
+                对话Form.Location = new Point(oMoveToPoint.X,120+oMoveToPoint.Y);
             }
         }
 
@@ -227,6 +251,8 @@ namespace Snowy
 
         #endregion
 
+        
+
         private void 退出ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();
@@ -236,6 +262,36 @@ namespace Snowy
         {
             tmrBlink.Interval = 40;
             tmrBlink.Start();
+        }
+
+        private void 天气ToolStripMenuItem_Click(object sender,EventArgs e)
+        {
+            string str= TulingApi.GetResponse("株洲天气");
+            反应Label.Text = str;
+        }
+
+        private void 笑话ToolStripMenuItem_Click(object sender,EventArgs e)
+        {
+            string str = TulingApi.GetResponse("讲个笑话");
+            反应Label.Text = "";
+            int length = str.Length;
+            int num=0;
+            int rownum = length / 20;
+
+            for (int i = 0; i <= rownum; i++)
+            {
+                if (num >= length)
+                    break;
+                for (int j = 0; j < 20; j++)
+                {
+                    if (num >= length-1)
+                        break;
+                    反应Label.Text += str[i * 20 + j];
+                    num++;
+                }
+                反应Label.Text += "\n";
+            }
+            
         }
 
         private void tmrBlink_Tick(object sender, EventArgs e)

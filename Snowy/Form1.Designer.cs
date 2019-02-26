@@ -1,4 +1,9 @@
-﻿namespace Snowy
+﻿using System.Drawing;
+using System;
+using System.Timers;
+using System.Windows.Forms;
+
+namespace Snowy
 {
     partial class Form1
     {
@@ -6,7 +11,7 @@
         /// 必需的设计器变量。
         /// </summary>
         private System.ComponentModel.IContainer components = null;
-
+        
         /// <summary>
         /// 清理所有正在使用的资源。
         /// </summary>
@@ -19,7 +24,7 @@
             }
             base.Dispose(disposing);
         }
-
+                      
         #region Windows 窗体设计器生成的代码
 
         /// <summary>
@@ -33,6 +38,8 @@
             this.tmrDrag = new System.Windows.Forms.Timer(this.components);
             this.rightClickMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.退出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.天气ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.笑话ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.眨眼ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.衣柜ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.圣诞帽子ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -41,6 +48,8 @@
             this.风车帽子ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.圣诞衣服ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.和服ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.反应Label = new System.Windows.Forms.Label();
+            this.对话Form = new System.Windows.Forms.Form();
             this.tmrBlink = new System.Windows.Forms.Timer(this.components);
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.rightClickMenu.SuspendLayout();
@@ -49,11 +58,32 @@
             // tmrDrag
             // 
             this.tmrDrag.Tick += new System.EventHandler(this.tmrDrag_Tick);
+
+            //
+            //设置对话Form
+            //
+            this.对话Form.TopMost = true;
+            this.对话Form.Location = new Point(-20 + Location.X, -10 + Location.Y);
+            this.对话Form.FormBorderStyle = FormBorderStyle.None;
+            this.对话Form.BackColor = Color.Fuchsia;
+            this.对话Form.TransparencyKey = Color.Fuchsia;
+            this.对话Form.Size = new Size(1080, 900);
+            this.对话Form.Show();
+
+            //
+            //label赋值
+            //
+            this.反应Label.AutoSize = true;
+            this.反应Label.Text = "我肥来了";
+            this.反应Label.Parent = this.对话Form;
+
             // 
             // rightClickMenu
             // 
             this.rightClickMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.退出ToolStripMenuItem,
+            this.天气ToolStripMenuItem,
+            this.笑话ToolStripMenuItem,
             this.眨眼ToolStripMenuItem,
             this.衣柜ToolStripMenuItem});
             this.rightClickMenu.Name = "rightClickMenu";
@@ -65,7 +95,22 @@
             this.退出ToolStripMenuItem.Size = new System.Drawing.Size(175, 24);
             this.退出ToolStripMenuItem.Text = "退出";
             this.退出ToolStripMenuItem.Click += new System.EventHandler(this.退出ToolStripMenuItem_Click);
+            //
+            //天气ToolStripMenuItem
+            //
+            this.天气ToolStripMenuItem.Name = "天气ToolStripMenuItem";
+            this.天气ToolStripMenuItem.Size = new System.Drawing.Size(175, 24);
+            this.天气ToolStripMenuItem.Text = "天气";
+            this.天气ToolStripMenuItem.Click += new System.EventHandler(this.天气ToolStripMenuItem_Click);
+            //
+            //笑话ToolStripMenuItem
+            //
             // 
+            this.笑话ToolStripMenuItem.Name = "笑话ToolStripMenuItem";
+            this.笑话ToolStripMenuItem.Size = new System.Drawing.Size(175, 24);
+            this.笑话ToolStripMenuItem.Text = "讲个笑话";
+            this.笑话ToolStripMenuItem.Click += new System.EventHandler(this.笑话ToolStripMenuItem_Click);
+            //
             // 眨眼ToolStripMenuItem
             // 
             this.眨眼ToolStripMenuItem.Name = "眨眼ToolStripMenuItem";
@@ -141,6 +186,13 @@
             // 
             // Form1
             // 
+            #region 设置Icon
+            Bitmap iconBit = new Bitmap(Application.StartupPath + "\\nico.ico");
+            System.IntPtr iconHandle = iconBit.GetHicon();
+            this.对话Form.Icon=Icon.FromHandle(iconHandle);
+            this.Icon = Icon.FromHandle(iconHandle);
+            #endregion
+
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(355, 303);
@@ -164,6 +216,8 @@
         private System.Windows.Forms.ContextMenuStrip rightClickMenu;
         private System.Windows.Forms.ToolStripMenuItem 眨眼ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 退出ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 天气ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 笑话ToolStripMenuItem;
         private System.Windows.Forms.Timer tmrBlink;
         private System.Windows.Forms.NotifyIcon notifyIcon1;
         private System.Windows.Forms.ToolStripMenuItem 衣柜ToolStripMenuItem;
@@ -173,6 +227,8 @@
         private System.Windows.Forms.ToolStripMenuItem 水手帽ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 和服ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 风车帽子ToolStripMenuItem;
+        private System.Windows.Forms.Label 反应Label;
+        private System.Windows.Forms.Form 对话Form;
     }
 }
 
