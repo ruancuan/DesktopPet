@@ -11,6 +11,7 @@ namespace Snowy
         /// 必需的设计器变量。
         /// </summary>
         private System.ComponentModel.IContainer components = null;
+
         
         /// <summary>
         /// 清理所有正在使用的资源。
@@ -40,6 +41,13 @@ namespace Snowy
             this.退出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.天气ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.笑话ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.功能ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.打开QQToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.打开音乐ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.打开模拟器ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.打开SteamToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.打开战网ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.打开纸飞机ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.眨眼ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.衣柜ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.圣诞帽子ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -76,14 +84,12 @@ namespace Snowy
             this.反应Label.AutoSize = true;
             this.反应Label.Text = "我肥来了";
             this.反应Label.Parent = this.对话Form;
-
             // 
             // rightClickMenu
             // 
             this.rightClickMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.退出ToolStripMenuItem,
-            this.天气ToolStripMenuItem,
-            this.笑话ToolStripMenuItem,
+            this.功能ToolStripMenuItem,
             this.眨眼ToolStripMenuItem,
             this.衣柜ToolStripMenuItem});
             this.rightClickMenu.Name = "rightClickMenu";
@@ -95,6 +101,23 @@ namespace Snowy
             this.退出ToolStripMenuItem.Size = new System.Drawing.Size(175, 24);
             this.退出ToolStripMenuItem.Text = "退出";
             this.退出ToolStripMenuItem.Click += new System.EventHandler(this.退出ToolStripMenuItem_Click);
+            //
+            //功能ToolStripMenuItem
+            //
+            this.功能ToolStripMenuItem.Name = "功能ToolStripMenuItem";
+            this.功能ToolStripMenuItem.Size = new System.Drawing.Size(175, 24);
+            this.功能ToolStripMenuItem.Text = "功能";
+            this.功能ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripMenuItem[] {
+                this.天气ToolStripMenuItem,
+                this.笑话ToolStripMenuItem,
+                this.打开QQToolStripMenuItem,
+                this.打开音乐ToolStripMenuItem,
+                this.打开模拟器ToolStripMenuItem,
+                this.打开SteamToolStripMenuItem,
+                this.打开战网ToolStripMenuItem,
+                this.打开纸飞机ToolStripMenuItem
+            });
+            
             //
             //天气ToolStripMenuItem
             //
@@ -110,6 +133,49 @@ namespace Snowy
             this.笑话ToolStripMenuItem.Size = new System.Drawing.Size(175, 24);
             this.笑话ToolStripMenuItem.Text = "讲个笑话";
             this.笑话ToolStripMenuItem.Click += new System.EventHandler(this.笑话ToolStripMenuItem_Click);
+            //
+            //打开QQToolStripMenu
+            //
+            //
+            this.打开QQToolStripMenuItem.Name = "打开QQToolStripMenuItem";
+            this.打开QQToolStripMenuItem.Size = new System.Drawing.Size(175, 24);
+            this.打开QQToolStripMenuItem.Text = "打开QQ";
+            this.打开QQToolStripMenuItem.Click += new System.EventHandler(this.打开QQToolStripMenuItem_Click);
+            //
+            //打开音乐ToolStripMenu
+            //
+            this.打开音乐ToolStripMenuItem.Name = "打开音乐ToolStripMenuItem";
+            this.打开音乐ToolStripMenuItem.Size = new System.Drawing.Size(175, 24);
+            this.打开音乐ToolStripMenuItem.Text = "打开音乐";
+            this.打开音乐ToolStripMenuItem.Click += new System.EventHandler(this.打开音乐ToolStripMenuItem_Click);
+            //
+            //打开模拟器ToolStripMenu
+            //
+            this.打开模拟器ToolStripMenuItem.Name = "打开模拟器ToolStripMenuItem";
+            this.打开模拟器ToolStripMenuItem.Size = new System.Drawing.Size(175, 24);
+            this.打开模拟器ToolStripMenuItem.Text = "打开模拟器";
+            this.打开模拟器ToolStripMenuItem.Click += new System.EventHandler(this.打开模拟器ToolStripMenuItem_Click);
+            //
+            //打开SteamToolStripMenu
+            //
+            this.打开SteamToolStripMenuItem.Name = "打开SteamToolStripMenuItem";
+            this.打开SteamToolStripMenuItem.Size = new System.Drawing.Size(175, 24);
+            this.打开SteamToolStripMenuItem.Text = "打开Steam";
+            this.打开SteamToolStripMenuItem.Click += new System.EventHandler(this.打开SteamToolStripMenuItem_Click);
+            //
+            //打开战网ToolStripMenu
+            //
+            this.打开战网ToolStripMenuItem.Name = "打开战网ToolStripMenuItem";
+            this.打开战网ToolStripMenuItem.Size = new System.Drawing.Size(175, 24);
+            this.打开战网ToolStripMenuItem.Text = "打开战网";
+            this.打开战网ToolStripMenuItem.Click += new System.EventHandler(this.打开战网ToolStripMenuItem_Click);
+            //
+            //打开纸飞机ToolStripMenuItem
+            //
+            this.打开纸飞机ToolStripMenuItem.Name = "打开纸飞机ToolStripMenuItem";
+            this.打开纸飞机ToolStripMenuItem.Size = new System.Drawing.Size(175, 24);
+            this.打开纸飞机ToolStripMenuItem.Text = "打开纸飞机";
+            this.打开纸飞机ToolStripMenuItem.Click += new System.EventHandler(this.打开纸飞机ToolStripMenuItem_Click);
             //
             // 眨眼ToolStripMenuItem
             // 
@@ -216,8 +282,15 @@ namespace Snowy
         private System.Windows.Forms.ContextMenuStrip rightClickMenu;
         private System.Windows.Forms.ToolStripMenuItem 眨眼ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 退出ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 功能ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 天气ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 笑话ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 打开QQToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 打开音乐ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 打开模拟器ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 打开SteamToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 打开战网ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 打开纸飞机ToolStripMenuItem;
         private System.Windows.Forms.Timer tmrBlink;
         private System.Windows.Forms.NotifyIcon notifyIcon1;
         private System.Windows.Forms.ToolStripMenuItem 衣柜ToolStripMenuItem;

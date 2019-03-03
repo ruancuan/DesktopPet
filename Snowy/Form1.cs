@@ -2,10 +2,13 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Snowy
 {
@@ -38,10 +41,19 @@ namespace Snowy
 
         #endregion
 
+        #region 路径
+        string QQPath = "";
+        string MusicPath = "";
+        string SimulatorPath = "";
+        string SteamPath = "";
+        string BlizzardBattleNetPath = "";
+        string PaperPlanePath = "";
+        #endregion
 
 
         public Form1()
         {
+            InitPath();
             IntPtrLoadCursorFromFile();
             InitializeComponent();
         }
@@ -79,6 +91,27 @@ namespace Snowy
         }
 
         #endregion
+
+        /// <summary>
+        /// 初始化启动软件的路径
+        /// </summary>
+        public void InitPath()
+        {
+            string jsonPath = Application.StartupPath + "\\content.json";
+            using(System.IO.StreamReader file = System.IO.File.OpenText(jsonPath))
+            {
+                using(JsonTextReader reader=new JsonTextReader(file))
+                {
+                    JObject o = (JObject)JToken.ReadFrom(reader);
+                    QQPath = o["QQPath"].ToString();
+                    MusicPath = o["MusicPath"].ToString();
+                    SimulatorPath = o["SimulatorPath"].ToString();
+                    SteamPath = o["SteamPath"].ToString();
+                    BlizzardBattleNetPath = o["BlizzardBattleNetPath"].ToString();
+                    PaperPlanePath = o["PaperPlanePath"].ToString();
+                }
+            }
+        }
 
         public void SetBits(Bitmap bitmap)
         {
@@ -155,7 +188,7 @@ namespace Snowy
             curhit1 = new Cursor(path1);
             IntPtr path2 = LoadCursorFromFile(Application.StartupPath + "\\shell\\cursor\\hit2.cur");
             curhit2 = new Cursor(path2);
-
+            
             return (IntPtr)0;
         }
 
@@ -294,6 +327,56 @@ namespace Snowy
             
         }
 
+        private void 打开QQToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (QQPath == "")
+                return;
+            OpenProcess(QQPath);
+        }
+
+        private void 打开音乐ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (MusicPath == "")
+                return;
+            OpenProcess(MusicPath);
+        }
+
+        private void 打开模拟器ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (SimulatorPath == "")
+                return;
+            OpenProcess(SimulatorPath);
+        }
+
+        private void 打开SteamToolStripMenuItem_Click(object sender,EventArgs e)
+        {
+            if (SteamPath == "")
+                return;
+            OpenProcess(SteamPath);
+
+        }
+
+        private void 打开战网ToolStripMenuItem_Click(object sender,EventArgs e)
+        {
+            if (BlizzardBattleNetPath == "")
+                return;
+            OpenProcess(BlizzardBattleNetPath);
+        } 
+
+        private void 打开纸飞机ToolStripMenuItem_Click(object sender,EventArgs e)
+        {
+            if (PaperPlanePath == "")
+                return;
+            OpenProcess(PaperPlanePath);
+        }
+
+        private void OpenProcess(string path)
+        {
+            Process open_Process = new Process();
+            open_Process.StartInfo.FileName = path;
+            open_Process.Start();
+        }
+
         private void tmrBlink_Tick(object sender, EventArgs e)
         {
             if (blinkFrame < 2)
@@ -363,5 +446,7 @@ namespace Snowy
                 petBlinkWithClothes[i] = Dress(petBlink[i], (int)PetStates.General);
             }
         }
+
+
     }
 }
